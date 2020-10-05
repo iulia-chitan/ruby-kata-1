@@ -3,22 +3,25 @@ require_relative 'csv_parser'
 class Magazine
 	extend CsvParser
 
-	ATTR_LIST = %w(title isbn publishedAt authors).freeze
-	DATA_PATH = "data/books.csv"
+	ATTR_LIST = %w(title isbn authors publishedat).freeze
+	DATA_PATH = "data/magazines.csv"
 	@@magazines = []
 
-	attr_accessor :title, :isbn, :publishedAt, :authors
+	attr_accessor :title, :isbn, :publishedat, :authors
 
 	def initialize(attrs)
 		@title = attrs[:title]
 		@isbn = attrs[:isbn]
-		@description = attrs[:publishedAt]
+		@publishedat = attrs[:publishedat]
 		@authors = Author.get_authors_by_email(attrs[:authors])
 	end
 
 	def print_details
-		puts "Magazine Title: #{title}, ISBN: #{isbn}"
+		puts "------------------------------------"
+		puts "Magazine Title: #{title}"
+		puts "ISBN: #{isbn}"
 		puts "Written by: #{authors.map(&:full_name).join(',')}"
-		puts "Published At: #{publishedAt}"
+		puts "Published At: #{publishedat}"
+		puts "------------------------------------"
 	end
 end

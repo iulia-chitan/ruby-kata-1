@@ -18,8 +18,11 @@ class Book
 	end
 
 	def print_details
-		puts "Book Title: #{title}, ISBN: #{isbn}"
+		puts "------------------------------------"
+		puts "Book Title: #{title}"
+		puts "ISBN: #{isbn}"
 		puts "Written by: #{authors.map(&:full_name).join(',')}"
 		puts "Description: #{description}"
+		puts "------------------------------------"
 	end
 end
